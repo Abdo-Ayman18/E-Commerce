@@ -1,0 +1,51 @@
+<section class="bg-gray-100 py-16 border border-gray-400">
+  <div class="container p-5">
+    <h1 data-aos="zoom-in" class="text-5xl text-green-800">Wash_List</h1>
+
+    <div
+      class="parent mt-10 grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4"
+    >
+      @for (item of washlistData; track $index) {
+      <div
+        class="card overflow-hidden group/iecon group/card relative"
+        data-aos="zoom-in"
+      >
+        <div class="">
+          <img
+            [src]="item.imageCover"
+            class="w-full h-[200px] object-contain"
+            [alt]="item.title"
+          />
+
+          <h4 class="text-xl py-2 line-clamp-1">
+            Category: {{ item.category }}
+          </h4>
+          <h4 class="text-xl py-2 line-clamp-1">Name: {{ item.title }}</h4>
+
+          <div class="flex justify-between items-center pt-4">
+            <span>{{ item.price }} EGP</span>
+            <span>
+              <i class="fa-solid fa-star" style="color: #ffd43b"></i>
+              {{ item.ratingsAverage }}
+            </span>
+          </div>
+        </div>
+
+        <button
+          (click)="removeCart(item._id)"
+          class="ms-3 cursor-pointer text-2xl p-1 bg-gray-300 rounded-4xl absolute top-5 end-5 translate-x-[170%] group-hover/iecon:translate-x-0"
+        >
+          <i class="fa-solid fa-heart-circle-xmark"></i>
+        </button>
+
+        <button
+          (click)="addProductItemToCart(item._id)"
+          class="btn translate-y-[150%] group-hover/card:translate-y-0"
+        >
+          Add To Cart
+        </button>
+      </div>
+      }
+    </div>
+  </div>
+</section>

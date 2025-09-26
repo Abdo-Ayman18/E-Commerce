@@ -1,0 +1,19 @@
+.btn-main {
+  background-color: #11bd11;
+  padding: 7px 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  color: #ffffff;
+  cursor: pointer;
+  transition: background-color 0.5s;
+}
+.btn-main:disabled {
+  cursor: not-allowed;
+  background-color: #ccc;
+}
+.btn-main:disabled:hover {
+  background-color: #f3f2f2;
+}
+.btn-main:hover {
+  background-color: #71aa71;
+}

@@ -1,0 +1,80 @@
+<div class="relative z-0 w-full mb-5 group">
+  <!-- @let nameControl=registerForm.get('name'); -->
+  @if (element==='input') {
+  <input
+    [class]="{
+      'border-green-700': control?.valid,
+      'border-red-700': control?.invalid && control?.touched
+    }"
+    [formControl]="control"
+    [type]="typeInput || (flag ? 'password' : 'text')"
+    [name]="idInput"
+    [id]="idInput"
+    class="input peer"
+    placeholder=" "
+  />
+  } @if (element==='text') {
+  <textarea
+    [class]="{
+      'border-green-700': control?.valid,
+      'border-red-700': control?.invalid && control?.touched
+    }"
+    [formControl]="control"
+    [name]="idInput"
+    [id]="idInput"
+    class="input peer"
+    placeholder=" "
+  ></textarea>
+
+  }
+
+  <label
+    [class]="{
+      'text-green-700': control?.valid,
+      'text-red-700': control?.invalid && control?.touched
+    }"
+    [for]="idInput"
+    class="label"
+  >
+    {{ labelInput }}
+  </label>
+
+  @if (idInput === 'password' || idInput === 'rePassword') {
+  <span
+    (click)="flag = !flag"
+    class="absolute top-1/5 end-4 -translate-y-1/5 cursor-pointer"
+  >
+    @if (flag) {
+    <i class="fas fa-eye"></i>
+    }@else {
+    <i class="fas fa-eye-slash"></i>
+    }
+  </span>
+  } @if (control?.errors && control?.touched) {
+  <div
+    class="flex p-4 mt-1 rounded-md mb-4 text-sm text-red-800 rounded-1g bg-red-50 dark:bg-gray-800 dark:text-red-400"
+    role="alert"
+  >
+    <ul class="mt-1.5 list-disc list-inside">
+      @if (control?.hasError('required')) {
+      <li>Input is required.</li>
+      } @if (control?.hasError('minlength')) {
+      <li>Input should be more than or equal 3 chars</li>
+
+      } @if (control?.hasError('maxlength')) {
+      <li>Input should be less than or equal 20 chars</li>
+
+      } @if (control?.hasError('email')) {
+      <li>Please enter a valid email address</li>
+
+      } @if (control?.hasError('pattern')) {
+      <li><ng-content></ng-content></li>
+
+      } @if (control?.hasError('mismatch')) {
+      <li>Password confirmation is incorrect</li>
+      }
+      <!-- <li>Password confirmation is incorrect</li> -->
+    </ul>
+  </div>
+  }
+</div>

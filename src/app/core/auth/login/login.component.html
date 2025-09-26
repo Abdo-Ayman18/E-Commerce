@@ -1,0 +1,140 @@
+<section
+  class="bg-gray-100 border border-gray-200 rounded-lg p-4 shadow-md md:w-1/2 mx-auto my-14"
+>
+  <h1 class="text-center mb-4 font-light text-3xl">Register Now</h1>
+  <!-- <div class="relative">
+    <input
+      [formControl]="email"
+      type="email"
+      id="email"
+      class="main-input peer"
+      placeholder=" "
+    />
+    <label for="email" class="main-label"> Email</label>
+  </div>
+  <button class="btn my-4" (click)="submit()">submet</button> -->
+
+  <form [formGroup]="loginForm" (ngSubmit)="submitForm()">
+    <!-- <div class="relative z-0 w-full mb-5 group">
+      @let nameControl=loginForm.get('name');
+      <input
+        [class]="{
+          'border-green-700': nameControl?.valid,
+          'border-red-700': nameControl?.invalid && nameControl?.touched
+        }"
+        formControlName="name"
+        type="text"
+        name="name"
+        id="name"
+        class="input peer"
+        placeholder=" "
+        required
+      />
+      <label
+        [class]="{
+          'text-green-700': nameControl?.valid,
+          'text-red-700': nameControl?.invalid && nameControl?.touched
+        }"
+        for="name"
+        class="label"
+      >
+        Name</label
+      >
+
+      @if (nameControl?.errors && nameControl?.touched) {
+      <div
+        class="flex p-4 mt-1 rounded-md mb-4 text-sm text-red-800 rounded-1g bg-red-50 dark:bg-gray-800 dark:text-red-400"
+        role="alert"
+      >
+        <ul class="mt-1.5 list-disc list-inside">
+          @if (nameControl?.getError('required')) {
+          <li>Input is required.</li>
+          } @if (nameControl?.getError('minlength')) {
+
+          <li>Input should be more than or equal 2 chars</li>
+          } @if (nameControl?.getError('maxlength')) {
+          <li>Input should be less than or equal 10 chars</li>
+          }
+        </ul>
+      </div>
+      }
+    </div> -->
+
+    <!-- <div class="relative z-0 my-3">
+      @let passwordControl=loginForm.get('password');
+      <div class="relative z-0 w-full mb-5 group">
+        <input
+          [class]="{
+            'text-green-700': passwordControl?.valid,
+            'text-red-700': passwordControl?.invalid && passwordControl?.touched
+          }"
+          formControlName="password"
+          type="password"
+          name="password"
+          id="password"
+          class="input peer"
+          placeholder=" "
+          required
+        />
+        <label
+          [class]="{
+            'text-green-700': passwordControl?.valid,
+            'text-red-700': passwordControl?.invalid && passwordControl?.touched
+          }"
+          for="password"
+          class="label"
+          >PassWord</label
+        >
+      </div>
+      @if(passwordControl?.errors && passwordControl?.touched) {
+      <div
+        class="flex p-4 mt-1 rounded-md mb-4 text-sm text-red-800 rounded-1g bg-red-50 dark:bg-gray-800 dark:text-red-400"
+        role="alert"
+      >
+        <ul class="mt-1.5 list-disc list-inside">
+          @if (passwordControl?.getError('required')) {
+          <li>Input is required.</li>
+          } @if (passwordControl?.getError('pattern')) {
+
+          <li>
+            Password must start with an uppercase letter followed by 3 to 8
+            lowercase letters or digits.
+          </li>
+          }
+        </ul>
+      </div>
+      }
+    </div> -->
+
+    <app-input
+      [control]="loginForm.get('email')"
+      [idInput]="'email'"
+      [labelInput]="'Email'"
+      [typeInput]="' email'"
+    ></app-input>
+    <app-input
+      [control]="loginForm.get('password')"
+      [idInput]="'password'"
+      [labelInput]="'PassWord'"
+      >Custom field should match the pattern</app-input
+    >
+    <a routerLink="/forgot" class="text-sky-700 cursor-pointer block py-3"
+      >Forgot Password</a
+    >
+    <button
+      type="submit"
+      [disabled]="loginForm.invalid"
+      [disabled]="isLoding"
+      class="btn rounded-lg"
+    >
+      Register @if (isLoding) {
+      <span> <i class="fas fa-spinner animate-spin"></i></span>
+      }
+    </button>
+    @if (masgError) {
+    <p class="text-red-900 text-center py-4 bg-red-200 my-4 rounded-lg">
+      {{ masgError }}
+    </p>
+    }
+  </form>
+</section>

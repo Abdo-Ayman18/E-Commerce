@@ -1,0 +1,19 @@
+<section class="bg-gray-200 shadow p-5 container">
+  <div
+    class="m-2 grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 shadow-2xl"
+  >
+    @for ( categorie of categoriesData; track categorie._id) {
+
+    <div
+      class="m-5 shadow-2xl shadow-gray-950 border border-gray-300 bg-gray-400 cursor-pointer rounded-2xl"
+    >
+      <img
+        [src]="categorie.image"
+        class="shadow rounded h-[250px] w-full"
+        [alt]="categorie.name"
+      />
+      <h2 class="my-3 text-2xl text-center">{{ categorie.name }}</h2>
+    </div>
+    }
+  </div>
+</section>

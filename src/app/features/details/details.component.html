@@ -1,0 +1,39 @@
+<section>
+  <div class="container">
+    <h1 class="title py-10 text-center">Details Product</h1>
+    <div class="grid sm:grid-cols-12 p-5">
+      <div class="col-span-3">
+        <owl-carousel-o [options]="detailsCarousel">
+          @for (image of productDetails.images; track $index) {
+          <ng-template carouselSlide [id]="image">
+            <img [src]="image" [alt]="productDetails.title" />
+          </ng-template>
+          }
+        </owl-carousel-o>
+      </div>
+      <div class="col-span-9 pt-32 px-14">
+        <h2 class="text-4xl pb-8">{{ productDetails.title }}</h2>
+        <p class="text-gray-500 text-xl pb-4">
+          {{ productDetails.description }}
+        </p>
+        <span class="inline-block pb-4 text-lg">
+          {{ productDetails.category.name }}
+        </span>
+
+        <div class="flex items-center justify-between">
+          <span> {{ productDetails.price }} EGP </span>
+          <span>
+            <i class="fas fa-star text-yellow-500"></i>
+            {{ productDetails.ratingsAverage }}
+          </span>
+        </div>
+        <button
+          (click)="addProductItemToCart(productDetails._id)"
+          class="btn mt-6"
+        >
+          <i class="fa-solid fa-plus"></i> Add To Card
+        </button>
+      </div>
+    </div>
+  </div>
+</section>

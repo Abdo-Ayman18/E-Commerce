@@ -1,0 +1,45 @@
+<section class="bg-gray-100 py-16 border border-gray-400">
+  <!-- @if (isLoading) {
+  <div class="flex justify-center items-center h-96 text-5xl text-green-600">
+    <span class="fas fa-spin fa-spinner"></span>
+  </div>
+  }@else { -->
+  <div class="container p-5">
+    <h2 data-aos="fade-up" class="text-5xl text-green-800">Popular Products</h2>
+
+    <div
+      class="parent mt-10 grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4"
+    >
+      @for (Product of prodectData| paginate: { id: 'foo', itemsPerPage:
+      pageSize, currentPage: p, totalItems: total }; track $index) {
+      <app-card [Product]="Product" [attr.data-aos-delay]="$index * 50" />
+      }
+    </div>
+    <div class="mt-10 flex justify-center">
+      <pagination-controls
+        id="foo"
+        (pageChange)="getProductData($event)"
+        (pageBoundsCorrection)="getProductData($event)"
+        [directionLinks]="true"
+        [autoHide]="true"
+        [responsive]="true"
+        previousLabel=""
+        nextLabel=""
+      >
+      </pagination-controls>
+
+      <!-- <pagination-controls
+        class="my-pagination"
+        id="foo"
+        (pageChange)="getProductData($event)"
+        (pageBoundsCorrection)="getProductData($event)"
+        (responsive)="(true)"
+        screenReaderPaginationLabel="+"
+        screenReaderCurrentLabel="++"
+      >
+        >
+      </pagination-controls> -->
+    </div>
+  </div>
+  <!-- } -->
+</section>

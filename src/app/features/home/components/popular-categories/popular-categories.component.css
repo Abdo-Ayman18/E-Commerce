@@ -1,0 +1,10 @@
+:host ::ng-deep .owl-dots .owl-dot span {
+  width: 10px;
+  height: 5px;
+  border-radius: 50%;
+  background: #bbb !important;
+}
+:host ::ng-deep .owl-dots .owl-dot.active span {
+  background: #ff5722 !important;
+  transform: scale(1.2);
+}

@@ -1,0 +1,33 @@
+@if (ordersList()) {
+<section class="bg-gray-200 border border-gray-200 p-5">
+  <table class="table-auto w-full border-collapse border border-gray-300">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Quantity</th>
+        <th>Total Price</th>
+        <th>Payment</th>
+        <th>Date</th>
+        <th>Show Details</th>
+      </tr>
+    </thead>
+    <tbody class="text-center">
+      @for (order of ordersList(); track order._id) {
+      <tr>
+        <td>{{ order._id }}</td>
+        <td>{{ order.cartItems.length }}</td>
+        <td>{{ order.totalOrderPrice }}</td>
+        <td>{{ order.paymentMethodType }}</td>
+        <td>{{ order.createdAt | date }}</td>
+        <td>
+          <button [routerLink]="['/allorder-details', order._id]" class="btn">
+            Details
+          </button>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</section>
+
+}
